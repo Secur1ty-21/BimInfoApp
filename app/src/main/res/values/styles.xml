@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HeadTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/headTextSize</item>
+        <item name="android:textColor">?attr/headTextColor</item>
+    </style>
+    <style name="TitleTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/titleTextSize</item>
+        <item name="android:textColor">?attr/titleTextColorPrimary</item>
+    </style>
+    <style name="DescriptionTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/descriptionTextSize</item>
+        <item name="android:textColor">?attr/descriptionTextColor</item>
+    </style>
+    <style name="ClickableTextView" parent="DescriptionTextView">
+        <item name="android:textColor">?attr/clickableTextColor</item>
+        <item name="android:textSize">@dimen/clickableTextSize</item>
+    </style>
+</resources>
