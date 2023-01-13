@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/screenBackgroundColor"
+    android:orientation="vertical"
+    android:padding="@dimen/screenPadding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/DescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_by_bin_description" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardUseCompatPadding="true">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/input_card_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="80dp"
+                    android:autofillHints="creditCardNumber"
+                    android:hint="@string/hint_input_card_number"
+                    android:imeOptions="actionSearch"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:textColorHint="?attr/hintInputColor"
+                    android:textSize="@dimen/titleTextSize" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    app:indicatorColor="?attr/buttonSearchTint"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="?attr/buttonSearchTint"
+            android:textColor="?attr/buttonSearchTextColor"
+            android:text="@string/search_by_bin_button_text"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
+</ScrollView>
