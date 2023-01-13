@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Bin info</string>
+    <string name="title_scheme">SCHEME / NETWORK</string>
+    <string name="title_brand">BRAND</string>
+    <string name="title_card_number">CARD NUMBER</string>
+    <string name="value_card_length">Length - %d</string>
+    <string name="value_card_lunh">LUNH - %s</string>
+    <string name="title_card_type">TYPE</string>
+    <string name="title_prepaid">PREPAID</string>
+    <string name="translate_boolean_true">Yes</string>
+    <string name="translate_boolean_false">No</string>
+    <string name="title_country">COUNTRY</string>
+    <string name="value_country_name">%s %s</string>
+    <string name="value_country_coordinates">( latitude: %f, longitude: %f )</string>
+    <string name="title_bank">BANK</string>
+    <string name="value_bank_name">%s, %s</string>
+    <string name="hint_input_card_number">0000 0000</string>
+    <string name="search_by_bin_button_text">Search institution</string>
+    <string name="search_by_bin_description">The first 6 or 8 digits of a payment card number(credit cards, debit cards, etc.) are known as the Issuer Identification Numbers (IIN), previously known as Bank Identification Number (BIN). These identify the institutionthat issued the card to the card holder.</string>
+    <string name="toolbar_title_bin_detail_fragment">Bin - %s</string>
+    <string name="not_found_error_text">This card bin not found</string>
+    <string name="invalid_input_error_text">Invalid input, card number should be 6 or 8 length</string>
 </resources>

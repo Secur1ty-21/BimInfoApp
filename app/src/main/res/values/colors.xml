@@ -11,7 +11,7 @@
     // Colors light theme
     <color name="red">#FF3B30</color>
     <color name="green">#34C759</color>
-    <color name="blue">#007AFF</color>
+    <color name="blue">#4285F4</color>
     <color name="gray">#8E8E93</color>
     <color name="gray_light">#D1D1D6</color>
     <color name="support_separator">#33000000</color>
@@ -26,7 +26,7 @@
     // Colors dark theme
     <color name="red_dark">#FF453A</color>
     <color name="green_dark">#32D74B</color>
-    <color name="blue_dark">#0A84FF</color>
+    <color name="blue_dark">#395998</color>
     <color name="gray_dark">@color/gray</color>
     <color name="gray_light_dark">#48484A</color>
     <color name="support_separator_dark">#33FFFFFF</color>

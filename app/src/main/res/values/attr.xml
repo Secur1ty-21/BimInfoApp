@@ -5,4 +5,7 @@
     <attr format="reference" name="titleTextColorPrimary"/>
     <attr format="reference" name="descriptionTextColor"/>
     <attr format="reference" name="clickableTextColor"/>
+    <attr format="reference" name="hintInputColor"/>
+    <attr format="reference" name="buttonSearchTint"/>
+    <attr format="reference" name="buttonSearchTextColor"/>
 </resources>
