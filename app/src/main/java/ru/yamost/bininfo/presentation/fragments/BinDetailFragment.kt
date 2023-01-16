@@ -1,5 +1,7 @@
 package ru.yamost.bininfo.presentation.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import ru.yamost.bininfo.R
 import ru.yamost.bininfo.databinding.FragmentBinDetailBinding
 import ru.yamost.bininfo.presentation.BinInfoViewModel
 import ru.yamost.bininfo.presentation.fragments.contract.HasCustomTitle
+
 
 class BinDetailFragment : Fragment(), HasCustomTitle {
 
@@ -80,33 +83,73 @@ class BinDetailFragment : Fragment(), HasCustomTitle {
                         titleCountry.visibility = TextView.VISIBLE
                     }
                     country.latitude?.let { latitude ->
-                        countryCoordinates.text = getString(
-                            R.string.value_country_coordinates,
-                            latitude, country.longitude ?: 0.0
-                        )
-                        titleCountry.visibility = TextView.VISIBLE
+                        country.longitude?.let { longitude ->
+                            countryCoordinates.text = getString(
+                                R.string.value_country_coordinates,
+                                latitude, longitude
+                            )
+                            countryCoordinates.setOnClickListener {
+                                onCoordinatesClicked(
+                                    latitude,
+                                    longitude
+                                )
+                            }
+                            titleCountry.visibility = TextView.VISIBLE
+                        }
                     }
                 }
                 binInfo.bank?.let { bank ->
-                    titleBank.visibility = TextView.VISIBLE
                     bank.name?.let { name ->
-                        getString(
+                        bankName.text = getString(
                             R.string.value_bank_name,
                             name, bank.city ?: ""
                         )
                         titleBank.visibility = TextView.VISIBLE
                     }
-                    bank.url?.let {
-                        bankUrl.text = it
+                    bank.url?.let { url ->
+                        bankUrl.text = url
+                        bankUrl.setOnClickListener { onBankUrlClicked(url) }
                         titleBank.visibility = TextView.VISIBLE
                     }
-                    bank.phone?.let {
-                        bankPhone.text = it
+                    bank.phone?.let { phone ->
+                        bankPhone.text = phone
+                        bankPhone.setOnClickListener { onPhoneClicked(phone) }
                         titleBank.visibility = TextView.VISIBLE
                     }
                 }
             }
         }
+    }
+
+    private fun onCoordinatesClicked(latitude: Double, longitude: Double) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:$latitude,$longitude"))
+        startImplicitIntent(intent)
+    }
+
+    private fun onBankUrlClicked(_url: String) {
+        var url = _url
+        if (!url.startsWith("https://") && !url.startsWith("http://")) {
+            url = "http://$url"
+        }
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startImplicitIntent(intent)
+    }
+
+    private fun onPhoneClicked(phone: String) {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phone"))
+        startImplicitIntent(intent)
+    }
+
+    private fun startImplicitIntent(intent: Intent) {
+        if (isIntentSafe(intent)) {
+            startActivity(intent)
+        }
+    }
+
+    private fun isIntentSafe(intent: Intent): Boolean {
+        val packageManager = requireActivity().packageManager
+        val activities = packageManager.queryIntentActivities(intent, 0)
+        return activities.size > 0
     }
 
     private fun translateBooleanToText(booleanValue: Boolean): String {
