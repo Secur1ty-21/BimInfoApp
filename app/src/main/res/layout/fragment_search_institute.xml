@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/screenBackgroundColor"
@@ -47,9 +48,9 @@
                     android:id="@+id/progressIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:indeterminate="true"
-                    app:indicatorColor="?attr/buttonSearchTint"
-                    android:layout_gravity="center"/>
+                    app:indicatorColor="?attr/buttonSearchTint" />
             </FrameLayout>
         </androidx.cardview.widget.CardView>
 
@@ -59,10 +60,28 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="?attr/buttonSearchTint"
-            android:textColor="?attr/buttonSearchTextColor"
             android:text="@string/search_by_bin_button_text"
             android:textAllCaps="false"
+            android:textColor="?attr/buttonSearchTextColor"
             android:textSize="15sp"
             app:cornerRadius="10dp" />
+
+        <TextView
+            style="@style/TitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/title_search_history" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_list"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_search_history" />
+
     </LinearLayout>
 </ScrollView>

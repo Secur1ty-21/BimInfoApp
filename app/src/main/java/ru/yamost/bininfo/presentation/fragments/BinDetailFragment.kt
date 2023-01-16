@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -42,35 +43,68 @@ class BinDetailFragment : Fragment(), HasCustomTitle {
     private fun renderDetailFragment() {
         sharingViewModel.binInfo.value?.let { binInfo ->
             with(binding) {
-                scheme.text = binInfo.scheme
-                brand.text = binInfo.brand
-                cardLength.text = getString(
-                    R.string.value_card_length,
-                    binInfo.cardNumber.length
-                )
-                lunh.text = getString(
-                    R.string.value_card_lunh,
-                    binInfo.cardNumber.isValidate?.let { translateBooleanToText(it) }
-                )
-                cardType.text = binInfo.type
-                cardPrepaid.text = binInfo.isPrepaid?.let { translateBooleanToText(it) }
-                countryName.text = getString(
-                    R.string.value_country_name,
-                    binInfo.country.emoji,
-                    binInfo.country.name
-                )
-                countryCoordinates.text = getString(
-                    R.string.value_country_coordinates,
-                    binInfo.country.latitude,
-                    binInfo.country.longitude
-                )
-                bankName.text = getString(
-                    R.string.value_bank_name,
-                    binInfo.bank.name,
-                    binInfo.bank.city
-                )
-                bankUrl.text = binInfo.bank.url
-                bankPhone.text = binInfo.bank.phone
+                binInfo.scheme?.let {
+                    titleScheme.visibility = TextView.VISIBLE
+                    scheme.text = it
+                }
+                binInfo.brand?.let {
+                    titleBrand.visibility = TextView.VISIBLE
+                    brand.text = it
+                }
+                binInfo.cardNumber?.let { cardNumber ->
+                    cardNumber.length?.let { length ->
+                        cardLength.text = getString(R.string.value_card_length, length)
+                        titleCardNumber.visibility = TextView.VISIBLE
+                    }
+                    cardNumber.isValidate?.let { isValidate ->
+                        lunh.text =
+                            getString(R.string.value_card_lunh, translateBooleanToText(isValidate))
+                        titleCardNumber.visibility = TextView.VISIBLE
+                    }
+                }
+                binInfo.type?.let {
+                    titleType.visibility = TextView.VISIBLE
+                    cardType.text = it
+                }
+                binInfo.isPrepaid?.let {
+                    titlePrepaid.visibility = TextView.VISIBLE
+                    cardPrepaid.text = translateBooleanToText(it)
+                }
+                binInfo.country?.let { country ->
+                    titleCountry.visibility = TextView.VISIBLE
+                    country.name?.let { name ->
+                        countryName.text = getString(
+                            R.string.value_country_name,
+                            country.emoji ?: "", name
+                        )
+                        titleCountry.visibility = TextView.VISIBLE
+                    }
+                    country.latitude?.let { latitude ->
+                        countryCoordinates.text = getString(
+                            R.string.value_country_coordinates,
+                            latitude, country.longitude ?: 0.0
+                        )
+                        titleCountry.visibility = TextView.VISIBLE
+                    }
+                }
+                binInfo.bank?.let { bank ->
+                    titleBank.visibility = TextView.VISIBLE
+                    bank.name?.let { name ->
+                        getString(
+                            R.string.value_bank_name,
+                            name, bank.city ?: ""
+                        )
+                        titleBank.visibility = TextView.VISIBLE
+                    }
+                    bank.url?.let {
+                        bankUrl.text = it
+                        titleBank.visibility = TextView.VISIBLE
+                    }
+                    bank.phone?.let {
+                        bankPhone.text = it
+                        titleBank.visibility = TextView.VISIBLE
+                    }
+                }
             }
         }
     }
@@ -93,6 +127,7 @@ class BinDetailFragment : Fragment(), HasCustomTitle {
     companion object {
         @JvmStatic
         private val ARG_CARD_BIN = "ARG_CARD_BIN"
+
         @JvmStatic
         private val KEY_CARD_BIN = "KEY_CARD_BIN"
 

@@ -6,10 +6,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class BinInfo(
-    val country: Country,
-    val bank: Bank,
+    val country: Country?,
+    val bank: Bank?,
     @Json(name = "number")
-    val cardNumber: CardNumber,
+    val cardNumber: CardNumber?,
     val scheme: String?,
     val type: String?,
     val brand: String?,

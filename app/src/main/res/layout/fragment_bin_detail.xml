@@ -12,6 +12,9 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/title_scheme"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +31,9 @@
             tools:text="Visa" />
 
         <TextView
+            android:id="@+id/title_brand"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +50,9 @@
             tools:text="Visa/Dankort" />
 
         <TextView
+            android:id="@+id/title_card_number"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,6 +77,9 @@
             tools:text="LUNH - Yes" />
 
         <TextView
+            android:id="@+id/title_type"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,6 +96,9 @@
             tools:text="Debit" />
 
         <TextView
+            android:id="@+id/title_prepaid"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,6 +115,9 @@
             tools:text="NO" />
 
         <TextView
+            android:id="@+id/title_country"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,6 +142,9 @@
             tools:text="(latitude: 56, longitude: 10)" />
 
         <TextView
+            android:id="@+id/title_bank"
+            android:visibility="gone"
+            tools:visibility="visible"
             style="@style/TitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

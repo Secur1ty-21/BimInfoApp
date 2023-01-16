@@ -20,4 +20,5 @@
     <string name="toolbar_title_bin_detail_fragment">Bin - %s</string>
     <string name="not_found_error_text">This card bin not found</string>
     <string name="invalid_input_error_text">Invalid input, card number should be 6 or 8 length</string>
+    <string name="title_search_history">Search history</string>
 </resources>
