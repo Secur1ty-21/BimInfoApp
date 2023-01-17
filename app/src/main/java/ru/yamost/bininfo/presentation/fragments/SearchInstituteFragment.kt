@@ -15,7 +15,6 @@ import ru.yamost.bininfo.presentation.BinInfoViewModel
 import ru.yamost.bininfo.presentation.adapter.SearchHistoryAdapter
 import ru.yamost.bininfo.presentation.adapter.SearchHistoryListener
 import ru.yamost.bininfo.presentation.fragments.contract.navigator
-import java.util.ArrayList
 import java.util.InputMismatchException
 
 class SearchInstituteFragment : Fragment() {
@@ -58,6 +57,7 @@ class SearchInstituteFragment : Fragment() {
         })
         binding.historyList.adapter = adapter
         adapter.submitList(sharingViewModel.searchHistory)
+
         with(sharingViewModel) {
             status.observe(viewLifecycleOwner) {
                 onStatusChanged()

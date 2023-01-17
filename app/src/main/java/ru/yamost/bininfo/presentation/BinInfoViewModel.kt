@@ -23,6 +23,7 @@ class BinInfoViewModel : ViewModel() {
     private val _searchHistory = mutableListOf<String>()
     val searchHistory: List<String> = _searchHistory
     private var _error: Exception = Exception()
+    private val getBinInfoByCardNumber = GetBinInfoByCardNumber()
     val error: Exception
         get() = _error
 
@@ -52,7 +53,7 @@ class BinInfoViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = BinInfoApiStatus.LOADING
             try {
-                _binInfo.value = GetBinInfoByCardNumber().execute(cardNumber)
+                _binInfo.value = getBinInfoByCardNumber.execute(cardNumber)
                 _binInfo.value?.let { mapInstitute[cardNumber] = it }
                 _searchHistory.add(cardNumber)
                 _status.value = BinInfoApiStatus.DONE
@@ -67,11 +68,11 @@ class BinInfoViewModel : ViewModel() {
         }
     }
 
-    init {
+    fun setDefaultState() {
         _status.value = BinInfoApiStatus.DEFAULT
     }
 
-    fun setDefaultState() {
-        _status.value = BinInfoApiStatus.DEFAULT
+    init {
+        setDefaultState()
     }
 }

@@ -15,7 +15,6 @@ import ru.yamost.bininfo.databinding.FragmentBinDetailBinding
 import ru.yamost.bininfo.presentation.BinInfoViewModel
 import ru.yamost.bininfo.presentation.fragments.contract.HasCustomTitle
 
-
 class BinDetailFragment : Fragment(), HasCustomTitle {
 
     private lateinit var binding: FragmentBinDetailBinding
